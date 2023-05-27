@@ -1,0 +1,74 @@
+Calculator.apxc :
+
+public class Calculator {
+    public Double xvalue {get;set;}
+    public Double yvalue {get;set;}
+    public Double result {get;set;}
+    public string operation {get;set;}
+
+    public pagereference sub() {
+        result = xvalue-yvalue;
+        operation = 'Subtraction';
+        return null;
+    }
+    public pagereference add() {
+        result = xvalue+yvalue;
+        operation = 'Addition';
+        return null;
+    }
+     public pagereference mul() {
+        result = xvalue*yvalue;
+        operation = 'Multiplication';
+        return null;
+     }
+    public pagereference div() {
+        result = xvalue/yvalue;
+        operation = 'Division';
+        return null;
+    }
+   public pagereference clear() {
+        result = 0;
+        xvalue = 0;
+        yvalue = 0;
+        operation = 'Clear';
+        return null;
+    }
+    
+}
+Calculator.vfp :
+
+<apex:page controller="Calculator" sidebar="false" >
+    <apex:form >
+        <apex:pageBlock title="Calculator">
+            <apex:pageBlockSection columns="1" title="Mathematical Operations" collapsible="false">           
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel >First Number : </apex:outputLabel>
+                <apex:inputText value="{!xvalue}"/>                
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel >Second Number : </apex:outputLabel>
+                <apex:inputText value="{!yvalue}"/>    
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel >Result : </apex:outputLabel>
+                <apex:inputText value="{!result}"/>    
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="Addition" action="{!add}"/> 
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="Subtraction" action="{!sub}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="Multiplication" action="{!mul}"/> 
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="Division" action="{!div}"/> 
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="Clear" action="{!clear}"/> 
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+       </apex:pageBlock>
+    </apex:form>   
+</apex:page>
